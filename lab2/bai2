@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+float calculates(float initialamount,float years,float interestrate)
+{
+	float total=initialamount;
+	for(int i=1;i<=years;i++)
+	{
+		total+=total*interestrate/100;
+	}
+	return total;
+} 
+int main()
+{
+	float initialamount,years,interestrate;
+	cout<<"\nEnter initial amount: ";
+	cin>>initialamount;
+	cout<<"\nEnter number of years: ";
+	cin>>years;
+	cout<<"\nEnter interest rate (percent per year): ";
+	cin>>interestrate;
+	cout<<"\nAt the end of 10 years, you will have: "<<calculates(initialamount,years,interestrate);
+	return 0;
+}
