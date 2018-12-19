@@ -5,24 +5,22 @@ struct number
 {
 	float firstnumber;
 	float secondnumber;
-	float thirdnumber;
-	float fourthnumber;
 	char operand1;
 	char operand2;
 };
 typedef number number;
-void input(number &n)
+void input(number &n,number &p)
 {
 	cout << "Enter first number, operator, second number: ";
-	cin >> n.firstnumber >> n.operand1 >> n.secondnumber >> n.operand2 >> n.thirdnumber >> n.operand1 >> n.fourthnumber;
+	cin >> n.firstnumber >> n.operand1 >> n.secondnumber >> n.operand2 >> p.firstnumber >> n.operand1 >> p.secondnumber;
 }
-double calculate(number &n)
+double calculate(number &n,number &p)
 {
 	int s,k;
 	if (n.operand2 == '+')
 	{
-		s = n.firstnumber * n.fourthnumber + n.secondnumber * n.thirdnumber;
-		k = n.secondnumber * n.fourthnumber;
+		s = n.firstnumber * p.secondnumber + n.secondnumber * p.firstnumber;
+		k = n.secondnumber * p.secondnumber;
 		if (s%k==0)
 			cout << s/k;
 		else
@@ -33,8 +31,8 @@ double calculate(number &n)
 	{
 		if (n.operand2 == '-')
 		{
-			s = n.firstnumber * n.fourthnumber - n.secondnumber * n.thirdnumber;
-			k = n.secondnumber * n.fourthnumber;
+			s = n.firstnumber * p.secondnumber - n.secondnumber * p.firstnumber;
+			k = n.secondnumber * p.secondnumber;
 			if (s%k == 0)
 				cout << s/k;
 			else
@@ -42,8 +40,8 @@ double calculate(number &n)
 		}
 		if (n.operand2 == '*')
 		{
-			s = n.firstnumber*n.thirdnumber;
-			k = n.fourthnumber* n.secondnumber;
+			s = n.firstnumber* p.firstnumber;
+			k =  p.secondnumber* n.secondnumber;
 			if (s%k == 0)
 				cout << s/k;
 			else
@@ -52,8 +50,8 @@ double calculate(number &n)
 
 		if (n.operand2 == '/')
 		{
-			s = n.firstnumber* n.fourthnumber;
-			k = n.thirdnumber* n.secondnumber;
+			s = n.firstnumber* p.secondnumber;
+			k =  p.firstnumber* n.secondnumber;
 			if (s%k == 0)
 				cout << s/k;
 			else
@@ -67,13 +65,12 @@ void repeat()
 	char n;
 	do 
 	{
-		number b;
-		input(b);
-		calculate(b);
+		number b,c;
+		input(b,c);
+		calculate(b,c);
 		cout<<"\nDo another(y/ n) ?  " ;
 		cin >> n;
 	} while (n == 'y');
-
 }
 int main()
 {
